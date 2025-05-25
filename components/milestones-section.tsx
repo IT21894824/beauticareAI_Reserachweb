@@ -3,44 +3,65 @@ import { Calendar, CheckCircle, Clock, Target } from "lucide-react";
 export default function MilestonesSection() {
   const milestones = [
     {
-      phase: "Phase 1",
-      title: "AI Model Development",
-      date: "Jun 2024",
+      phase: "Milestone 1",
+      title: "Project Proposal",
+      date: "July 2024",
       description:
-        "Building and training machine learning models for skin and facial feature analysis",
+        "Initial documentation of project scope, objectives, and technologies.",
       status: "completed",
       icon: CheckCircle,
     },
     {
-      phase: "Phase 2",
-      title: "Interface Design",
-      date: "Aug 2024",
-      description: "Designing an intuitive and user-friendly mobile interface",
+      phase: "Milestone 2",
+      title: "Progress Presentation 1",
+      date: "December 2024",
+      description:
+        "First round of presentation on research background, literature and methodologies.",
       status: "completed",
       icon: CheckCircle,
     },
     {
-      phase: "Phase 3",
-      title: "Application Development",
-      date: "Oct 2024",
-      description: "Integrating AI capabilities with mobile UI components",
+      phase: "Milestone 3",
+      title: "Research Paper",
+      date: "March 2025",
+      description:
+        "Submission of research paper for academic publication and review.",
+      status: "completed",
+      icon: CheckCircle,
+    },
+    {
+      phase: "Milestone 4",
+      title: "Progress Presentation 2",
+      date: "March 2025",
+      description:
+        "Second presentation on development progress and implementation milestones.",
       status: "in-progress",
       icon: Clock,
     },
     {
-      phase: "Phase 4",
-      title: "Makeup & Fashion Module Integration",
-      date: "Feb 2025",
+      phase: "Milestone 5",
+      title: "Final Report",
+      date: "April 2025",
       description:
-        "Expanding recommendations to include makeup and outfit styling",
+        "Submission of complete final project documentation and findings.",
       status: "upcoming",
       icon: Target,
     },
     {
-      phase: "Phase 5",
-      title: "Final Testing & Deployment",
-      date: "Apr 2025",
-      description: "System testing, final polishing, and release to production",
+      phase: "Milestone 6",
+      title: "Final Presentation & Viva",
+      date: "May 2025",
+      description:
+        "Demonstration and oral defense of the final solution and report.",
+      status: "upcoming",
+      icon: Target,
+    },
+    {
+      phase: "Milestone 7",
+      title: "Website Evaluation & Logbook Submission",
+      date: "June 2025",
+      description:
+        "Final evaluation of the website, system demo and submission of individual logbooks.",
       status: "upcoming",
       icon: Target,
     },
