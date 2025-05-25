@@ -28,13 +28,6 @@ export default function Navbar() {
     "Technologies",
   ];
 
-  const downloadsItems = [
-    "Research Papers",
-    "Documentation",
-    "Datasets",
-    "Source Code",
-  ];
-
   // Scroll to section
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -145,23 +138,10 @@ export default function Navbar() {
             >
               <button
                 className={`flex items-center ${navItemClass("downloads")}`}
+                onClick={() => scrollToSection("downloads")}
               >
                 Downloads
-                <ChevronDown className="ml-1 h-4 w-4" />
               </button>
-              {activeDropdown === "downloads" && (
-                <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
-                  {downloadsItems.map((item, index) => (
-                    <button
-                      key={index}
-                      onClick={() => scrollToSection("downloads")}
-                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#FAE7FB] hover:text-[#E3AADD] transition-colors"
-                    >
-                      {item}
-                    </button>
-                  ))}
-                </div>
-              )}
             </div>
           </div>
 

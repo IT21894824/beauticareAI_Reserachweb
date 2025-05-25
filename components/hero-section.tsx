@@ -35,11 +35,11 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-30 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">
-          Discover the Future of{" "}
+          Explore the Future of {""}
           <span className="bg-gradient-to-r from-[#8a3381] to-[#4b1c7a] bg-clip-text text-transparent">
-            Skincare , Haircare, and Makeup
+            Fashion and Beauty
           </span>{" "}
-          with BeautiCare AI
+          with BeautiCare AI
         </h1>
 
         <p className="text-xl sm:text-2xl text-gray-600 mb-8 leading-relaxed">

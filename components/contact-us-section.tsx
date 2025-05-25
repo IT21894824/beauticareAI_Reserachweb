@@ -1,91 +1,113 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Mail, Phone, MapPin, Send, Facebook, Twitter, Instagram, Linkedin } from "lucide-react"
+import { useState } from "react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Facebook,
+  Twitter,
+  Instagram,
+  Linkedin,
+} from "lucide-react";
 
 export default function ContactUsSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
-  })
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // Handle form submission here
-    console.log("Form submitted:", formData)
+    console.log("Form submitted:", formData);
     // Reset form
-    setFormData({ name: "", email: "", message: "" })
-  }
+    setFormData({ name: "", email: "", message: "" });
+  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   const contactInfo = [
     {
       icon: Mail,
       title: "Email",
-      value: "contact@beauticareai.com",
-      link: "mailto:contact@beauticareai.com",
+      value: "tharushikadewni@gmail.com",
+      link: "mailto:tharushikadewni@gmail.com",
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+1 (555) 123-4567",
-      link: "tel:+15551234567",
+      value: "+94 0716726902",
+      link: "tel:+940716726902",
     },
     {
       icon: MapPin,
       title: "Location",
-      value: "University Research Center, Tech Valley",
+      value: "Sri Lanka Institute of Information Technology, Malabe",
       link: "#",
     },
-  ]
+  ];
 
   const socialLinks = [
     { icon: Facebook, href: "#", label: "Facebook" },
     { icon: Twitter, href: "#", label: "Twitter" },
     { icon: Instagram, href: "#", label: "Instagram" },
     { icon: Linkedin, href: "#", label: "LinkedIn" },
-  ]
+  ];
 
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#FAE7FB] to-[#F2DDDC]">
+    <section
+      id="contact"
+      className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#FAE7FB] to-[#F2DDDC]"
+    >
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-gray-800 mb-4">Contact Us</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Get in touch with our team for collaborations, questions, or feedback
+            Get in touch with our team for collaborations, questions, or
+            feedback
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div>
-            <h3 className="text-2xl font-bold text-gray-800 mb-8">Get in Touch</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-8">
+              Get in Touch
+            </h3>
 
             <div className="space-y-6 mb-8">
               {contactInfo.map((info, index) => {
-                const IconComponent = info.icon
+                const IconComponent = info.icon;
                 return (
                   <div key={index} className="flex items-center space-x-4">
                     <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#E3AADD] to-[#C8A8E9] rounded-full flex items-center justify-center">
                       <IconComponent className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-800">{info.title}</h4>
-                      <a href={info.link} className="text-gray-600 hover:text-[#E3AADD] transition-colors">
+                      <h4 className="font-semibold text-gray-800">
+                        {info.title}
+                      </h4>
+                      <a
+                        href={info.link}
+                        className="text-gray-600 hover:text-[#E3AADD] transition-colors"
+                      >
                         {info.value}
                       </a>
                     </div>
                   </div>
-                )
+                );
               })}
             </div>
 
@@ -94,7 +116,7 @@ export default function ContactUsSection() {
               <h4 className="font-semibold text-gray-800 mb-4">Follow Us</h4>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => {
-                  const IconComponent = social.icon
+                  const IconComponent = social.icon;
                   return (
                     <a
                       key={index}
@@ -104,7 +126,7 @@ export default function ContactUsSection() {
                     >
                       <IconComponent className="h-5 w-5" />
                     </a>
-                  )
+                  );
                 })}
               </div>
             </div>
@@ -112,11 +134,16 @@ export default function ContactUsSection() {
 
           {/* Contact Form */}
           <div className="bg-white rounded-xl shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">Send us a Message</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">
+              Send us a Message
+            </h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Name
                 </label>
                 <input
@@ -132,7 +159,10 @@ export default function ContactUsSection() {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Email
                 </label>
                 <input
@@ -148,7 +178,10 @@ export default function ContactUsSection() {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Message
                 </label>
                 <textarea
@@ -175,5 +208,5 @@ export default function ContactUsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
