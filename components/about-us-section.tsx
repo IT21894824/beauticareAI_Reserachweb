@@ -13,14 +13,14 @@ export default function AboutUsSection() {
       image: "/team/vidanaha.jpg",
     },
     {
-      name: "P.M. Prabashwara",
+      name: "J.H.M Shaakir ",
       role: "Clothing Recommendation based on Body Type & Skin Tone\nDepartment of Information Technology\nSri Lanka Institute of Information Technology\nMalabe, Sri Lanka\nit21180798@my.sliit.lk",
-      image: "/team/prabashwara.jpg",
+      image: "/team/shakir.jpg",
     },
     {
-      name: "K.D.M. Mihisara",
-      role: "Makeup Recommendation based on Facial Features\nDepartment of Information Technology\nSri Lanka Institute of Information Technology\nMalabe, Sri Lanka\nit21322280@my.sliit.lk",
-      image: "/team/mihisara.jpg",
+      name: " D.R. Senarathne",
+      role: "Makeup Recommendation based on Facial Features\nDepartment of Information Technology\nSri Lanka Institute of Information Technology\nMalabe, Sri Lanka\nit21213144@my.sliit.lk",
+      image: "/team/Senarathne.jpg",
     },
   ];
 
