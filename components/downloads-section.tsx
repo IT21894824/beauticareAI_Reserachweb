@@ -38,6 +38,24 @@ export default function DownloadsSection() {
       format: "PDF",
       downloadUrl: "/downloads/research-paper.pdf",
     },
+    {
+      title: "Final Report",
+      description:
+        "Comprehensive report detailing the entire project lifecycle, methodologies, and outcomes.",
+      icon: FileText,
+      fileSize: "449 KB",
+      format: "PDF",
+      downloadUrl: "/downloads/research-paper.pdf",
+    },
+    {
+      title: "Final Presentation",
+      description:
+        "Final presentation summarizing the project, methodologies, and results.",
+      icon: FileText,
+      fileSize: "449 KB",
+      format: "PPTX",
+      downloadUrl: "/downloads/research-paper.pdf",
+    },
   ];
 
   return (
