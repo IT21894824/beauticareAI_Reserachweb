@@ -37,7 +37,7 @@ export default function HeroSection() {
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 mb-6 leading-tight">
           Discover the Future of{" "}
           <span className="bg-gradient-to-r from-[#8a3381] to-[#4b1c7a] bg-clip-text text-transparent">
-            Skincare
+            Skincare , Haircare, and Makeup
           </span>{" "}
           with BeautiCare AI
         </h1>
