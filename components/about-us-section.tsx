@@ -14,7 +14,7 @@ export default function AboutUsSection() {
     },
     {
       name: "J.H.M Shaakir ",
-      role: "Clothing Recommendation based on Body Type & Skin Tone\nDepartment of Information Technology\nSri Lanka Institute of Information Technology\nMalabe, Sri Lanka\nit21180798@my.sliit.lk",
+      role: "Clothing Recommendation based on Body Type & Skin Tone\nDepartment of Information Technology\nSri Lanka Institute of Information Technology\nMalabe, Sri Lanka\nit21322280@my.sliit.lk",
       image: "/team/shakir.jpg",
     },
     {
@@ -27,7 +27,7 @@ export default function AboutUsSection() {
   const academicStaff = [
     {
       name: "Ms. M.P. Gamage",
-      role: "Supervisor\nDepartment of Computer Science and Software Engineering\nSri Lanka Institute of Information Technology\nMalabe, Sri Lanka\nmanori.g@sliit.lk",
+      role: "Supervisor\nDepartment of Information Technology\nSri Lanka Institute of Information Technology\nMalabe, Sri Lanka\nmanori.g@sliit.lk",
       image: "/team/supervisor.jpg",
     },
     {
