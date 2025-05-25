@@ -1,11 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeSection, setActiveSection] = useState<string>("home");
+
+  const sections = [
+    "home",
+    "project-scope",
+    "app-preview",
+    "milestones",
+    "downloads",
+    "about",
+    "contact",
+  ];
 
   const projectScopeItems = [
     "Literature Survey",
@@ -23,6 +35,7 @@ export default function Navbar() {
     "Source Code",
   ];
 
+  // Scroll to section
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -31,113 +44,128 @@ export default function Navbar() {
     setIsMenuOpen(false);
   };
 
+  // Highlight active section on scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+            break;
+          }
+        }
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.6, // 60% in view
+      }
+    );
+
+    sections.forEach((id) => {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const navItemClass = (id: string) =>
+    `px-3 py-2 text-sm font-medium transition-colors ${
+      activeSection === id
+        ? "text-[#E3AADD] border-b-2 border-[#E3AADD]"
+        : "text-gray-700 hover:text-[#E3AADD]"
+    }`;
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md shadow-lg">
       <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0">
+          {/* Logo + Title */}
+          <div className="flex items-center space-x-2">
+            <Image
+              src="/faviconbe.png"
+              alt="BeautiCare Logo"
+              width={40}
+              height={40}
+            />
             <h1 className="text-2xl font-bold bg-gradient-to-r from-[#E3AADD] to-[#C8A8E9] bg-clip-text text-transparent">
               BeautiCare AI
             </h1>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              <button
-                onClick={() => scrollToSection("home")}
-                className="text-gray-700 hover:text-[#E3AADD] px-3 py-2 text-sm font-medium border-b-2 border-[#E3AADD] transition-colors"
-              >
-                Home
-              </button>
-
-              {/* Project Scope Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setActiveDropdown("project-scope")}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <button className="text-gray-700 hover:text-[#E3AADD] px-3 py-2 text-sm font-medium flex items-center transition-colors">
-                  Project Scope
-                  <ChevronDown className="ml-1 h-4 w-4" />
+          <div className="hidden md:flex items-center space-x-8">
+            {sections.map((id) =>
+              id === "project-scope" || id === "downloads" ? null : (
+                <button
+                  key={id}
+                  onClick={() => scrollToSection(id)}
+                  className={navItemClass(id)}
+                >
+                  {id
+                    .replace("-", " ")
+                    .replace(/\b\w/g, (c) => c.toUpperCase())}
                 </button>
-                {activeDropdown === "project-scope" && (
-                  <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
-                    {projectScopeItems.map((item, index) => (
-                      <button
-                        key={index}
-                        onClick={() => scrollToSection("project-scope")}
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#FAE7FB] hover:text-[#E3AADD] transition-colors"
-                      >
-                        {item}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
+              )
+            )}
 
+            {/* Project Scope Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setActiveDropdown("project-scope")}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
               <button
-                onClick={() => scrollToSection("app-preview")}
-                className="text-gray-700 hover:text-[#E3AADD] px-3 py-2 text-sm font-medium transition-colors"
+                className={`flex items-center ${navItemClass("project-scope")}`}
               >
-                App Preview
+                Project Scope
+                <ChevronDown className="ml-1 h-4 w-4" />
               </button>
+              {activeDropdown === "project-scope" && (
+                <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                  {projectScopeItems.map((item, index) => (
+                    <button
+                      key={index}
+                      onClick={() => scrollToSection("project-scope")}
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#FAE7FB] hover:text-[#E3AADD] transition-colors"
+                    >
+                      {item}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
 
+            {/* Downloads Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setActiveDropdown("downloads")}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
               <button
-                onClick={() => scrollToSection("milestones")}
-                className="text-gray-700 hover:text-[#E3AADD] px-3 py-2 text-sm font-medium transition-colors"
+                className={`flex items-center ${navItemClass("downloads")}`}
               >
-                Milestones
+                Downloads
+                <ChevronDown className="ml-1 h-4 w-4" />
               </button>
-
-              {/* Downloads Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setActiveDropdown("downloads")}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <button className="text-gray-700 hover:text-[#E3AADD] px-3 py-2 text-sm font-medium flex items-center transition-colors">
-                  Downloads
-                  <ChevronDown className="ml-1 h-4 w-4" />
-                </button>
-                {activeDropdown === "downloads" && (
-                  <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2">
-                    {downloadsItems.map((item, index) => (
-                      <button
-                        key={index}
-                        onClick={() => scrollToSection("downloads")}
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#FAE7FB] hover:text-[#E3AADD] transition-colors"
-                      >
-                        {item}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              <button
-                onClick={() => scrollToSection("about")}
-                className="text-gray-700 hover:text-[#E3AADD] px-3 py-2 text-sm font-medium transition-colors"
-              >
-                About Us
-              </button>
-              {/* <button
-                onClick={() => scrollToSection("achievements")}
-                className="text-gray-700 hover:text-[#E3AADD] px-3 py-2 text-sm font-medium transition-colors"
-              >
-                Achievements
-              </button> */}
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="text-gray-700 hover:text-[#E3AADD] px-3 py-2 text-sm font-medium transition-colors"
-              >
-                Contact Us
-              </button>
+              {activeDropdown === "downloads" && (
+                <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                  {downloadsItems.map((item, index) => (
+                    <button
+                      key={index}
+                      onClick={() => scrollToSection("downloads")}
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-[#FAE7FB] hover:text-[#E3AADD] transition-colors"
+                    >
+                      {item}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -156,54 +184,21 @@ export default function Navbar() {
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t border-gray-200">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              <button
-                onClick={() => scrollToSection("home")}
-                className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-[#E3AADD] hover:bg-[#FAE7FB] rounded-md"
-              >
-                Home
-              </button>
-              <button
-                onClick={() => scrollToSection("project-scope")}
-                className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-[#E3AADD] hover:bg-[#FAE7FB] rounded-md"
-              >
-                Project Scope
-              </button>
-              <button
-                onClick={() => scrollToSection("app-preview")}
-                className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-[#E3AADD] hover:bg-[#FAE7FB] rounded-md"
-              >
-                App Preview
-              </button>
-              <button
-                onClick={() => scrollToSection("milestones")}
-                className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-[#E3AADD] hover:bg-[#FAE7FB] rounded-md"
-              >
-                Milestones
-              </button>
-              <button
-                onClick={() => scrollToSection("downloads")}
-                className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-[#E3AADD] hover:bg-[#FAE7FB] rounded-md"
-              >
-                Downloads
-              </button>
-              <button
-                onClick={() => scrollToSection("about")}
-                className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-[#E3AADD] hover:bg-[#FAE7FB] rounded-md"
-              >
-                About Us
-              </button>
-              {/* <button
-                onClick={() => scrollToSection("achievements")}
-                className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-[#E3AADD] hover:bg-[#FAE7FB] rounded-md"
-              >
-                Achievements
-              </button> */}
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-[#E3AADD] hover:bg-[#FAE7FB] rounded-md"
-              >
-                Contact Us
-              </button>
+              {sections.map((id) => (
+                <button
+                  key={id}
+                  onClick={() => scrollToSection(id)}
+                  className={`block w-full text-left px-3 py-2 text-base font-medium rounded-md ${
+                    activeSection === id
+                      ? "text-[#E3AADD] bg-[#FAE7FB]"
+                      : "text-gray-700 hover:text-[#E3AADD] hover:bg-[#FAE7FB]"
+                  }`}
+                >
+                  {id
+                    .replace("-", " ")
+                    .replace(/\b\w/g, (c) => c.toUpperCase())}
+                </button>
+              ))}
             </div>
           </div>
         )}
