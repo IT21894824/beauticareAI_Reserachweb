@@ -3,36 +3,36 @@ import { Users, Award, Target, Heart } from "lucide-react";
 export default function AboutUsSection() {
   const teamMembers = [
     {
-      name: "S.A.D.E. Prasad",
-      role: "Team Leader / Researcher",
+      name: "S.A.D.T. Prasadi",
+      role: "Team Leader / Personalized Hair Color Recommendation with Real-Time Application\nDepartment of Information Technology\nSri Lanka Institute of Information Technology\nMalabe, Sri Lanka\nit21894824@my.sliit.lk",
       image: "/team/prasad.jpg",
     },
     {
-      name: "M.K.I. Vidanaha",
-      role: "Machine Learning Engineer",
+      name: "M.K.I. Vikasitha",
+      role: "Hair Style Transformation and Realistic Simulation for Personalized Recommendations\nDepartment of Information Technology\nSri Lanka Institute of Information Technology\nMalabe, Sri Lanka\nit21180798@my.sliit.lk",
       image: "/team/vidanaha.jpg",
     },
     {
       name: "P.M. Prabashwara",
-      role: "Frontend Developer",
+      role: "Clothing Recommendation based on Body Type & Skin Tone\nDepartment of Information Technology\nSri Lanka Institute of Information Technology\nMalabe, Sri Lanka\nit21180798@my.sliit.lk",
       image: "/team/prabashwara.jpg",
     },
     {
       name: "K.D.M. Mihisara",
-      role: "Mobile Developer",
+      role: "Makeup Recommendation based on Facial Features\nDepartment of Information Technology\nSri Lanka Institute of Information Technology\nMalabe, Sri Lanka\nit21322280@my.sliit.lk",
       image: "/team/mihisara.jpg",
     },
   ];
 
   const academicStaff = [
     {
-      name: "Mr. J. Chamod Rukmal",
-      role: "Supervisor",
+      name: "Ms. M.P. Gamage",
+      role: "Supervisor\nDepartment of Computer Science and Software Engineering\nSri Lanka Institute of Information Technology\nMalabe, Sri Lanka\nmanori.g@sliit.lk",
       image: "/team/supervisor.jpg",
     },
     {
-      name: "Ms. S.A.D. Sanjana",
-      role: "Co-Supervisor",
+      name: "Mr. U. Dharmakeerthi",
+      role: "Co-Supervisor\nDepartment of Computer Systems and Engineering\nSri Lanka Institute of Information Technology\nMalabe, Sri Lanka\nuditha.d@sliit.lk",
       image: "/team/cosupervisor.jpg",
     },
   ];
@@ -67,10 +67,12 @@ export default function AboutUsSection() {
                     alt={member.name}
                     className="w-24 h-24 mx-auto mb-4 rounded-full object-cover"
                   />
-                  <div className="text-lg font-semibold text-gray-800">
+                  <div className="text-lg font-semibold text-gray-800 mb-1">
                     {member.name}
                   </div>
-                  <div className="text-sm text-gray-600">{member.role}</div>
+                  <div className="text-sm text-gray-600 whitespace-pre-line">
+                    {member.role}
+                  </div>
                 </div>
               ))}
             </div>
@@ -92,10 +94,12 @@ export default function AboutUsSection() {
                     alt={staff.name}
                     className="w-24 h-24 mx-auto mb-4 rounded-full object-cover"
                   />
-                  <div className="text-lg font-semibold text-gray-800">
+                  <div className="text-lg font-semibold text-gray-800 mb-1">
                     {staff.name}
                   </div>
-                  <div className="text-sm text-gray-600">{staff.role}</div>
+                  <div className="text-sm text-gray-600 whitespace-pre-line">
+                    {staff.role}
+                  </div>
                 </div>
               ))}
             </div>
