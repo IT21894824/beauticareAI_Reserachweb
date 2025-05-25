@@ -1,6 +1,11 @@
-import { Trophy, Star, Award, Medal, Crown, Zap } from "lucide-react"
+"use client";
+
+import { useEffect, useRef } from "react";
+import { Trophy, Star, Award, Medal, Crown, Zap } from "lucide-react";
 
 export default function AchievementsSection() {
+  const sliderRef = useRef<HTMLDivElement>(null);
+
   const achievements = [
     {
       icon: Trophy,
@@ -38,23 +43,53 @@ export default function AchievementsSection() {
       organization: "Tech Startup Competition 2024",
       color: "from-[#C3C7F4] to-[#F6BCBA]",
     },
-  ]
+  ];
+
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    let animationFrameId: number;
+    let scrollPos = 0;
+
+    const scroll = () => {
+      if (!slider) return;
+
+      scrollPos += 0.5; // speed
+      if (scrollPos >= slider.scrollWidth - slider.clientWidth) {
+        scrollPos = 0; // reset
+      }
+      slider.scrollLeft = scrollPos;
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
 
   return (
     <section id="achievements" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">Achievements</h2>
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">
+            Achievements
+          </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Recognition and awards for our innovative work in AI-powered skincare
+            Recognition and awards for our innovative work in AI-powered
+            skincare
           </p>
         </div>
 
-        {/* Desktop Horizontal Scroll */}
+        {/* Auto-Scrolling Slider (Desktop) */}
         <div className="hidden md:block">
-          <div className="flex space-x-6 overflow-x-auto pb-4 scrollbar-hide">
-            {achievements.map((achievement, index) => {
-              const IconComponent = achievement.icon
+          <div
+            ref={sliderRef}
+            className="flex space-x-6 overflow-x-auto pb-4 scrollbar-hide"
+          >
+            {achievements.concat(achievements).map((achievement, index) => {
+              // duplicate list to ensure seamless looping
+              const IconComponent = achievement.icon;
               return (
                 <div
                   key={index}
@@ -66,19 +101,22 @@ export default function AchievementsSection() {
                     <IconComponent className="h-8 w-8 text-white" />
                   </div>
 
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">{achievement.title}</h3>
-
-                  <p className="text-gray-600 font-medium">{achievement.organization}</p>
+                  <h3 className="text-xl font-bold text-gray-800 mb-2">
+                    {achievement.title}
+                  </h3>
+                  <p className="text-gray-600 font-medium">
+                    {achievement.organization}
+                  </p>
                 </div>
-              )
+              );
             })}
           </div>
         </div>
 
-        {/* Mobile Grid */}
+        {/* Static Grid on Mobile */}
         <div className="md:hidden grid grid-cols-1 sm:grid-cols-2 gap-6">
           {achievements.map((achievement, index) => {
-            const IconComponent = achievement.icon
+            const IconComponent = achievement.icon;
             return (
               <div
                 key={index}
@@ -90,14 +128,17 @@ export default function AchievementsSection() {
                   <IconComponent className="h-6 w-6 text-white" />
                 </div>
 
-                <h3 className="text-lg font-bold text-gray-800 mb-2">{achievement.title}</h3>
-
-                <p className="text-gray-600 text-sm font-medium">{achievement.organization}</p>
+                <h3 className="text-lg font-bold text-gray-800 mb-2">
+                  {achievement.title}
+                </h3>
+                <p className="text-gray-600 text-sm font-medium">
+                  {achievement.organization}
+                </p>
               </div>
-            )
+            );
           })}
         </div>
       </div>
     </section>
-  )
+  );
 }

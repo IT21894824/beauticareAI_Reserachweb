@@ -122,12 +122,12 @@ export default function Navbar() {
               >
                 About Us
               </button>
-              <button
+              {/* <button
                 onClick={() => scrollToSection("achievements")}
                 className="text-gray-700 hover:text-[#E3AADD] px-3 py-2 text-sm font-medium transition-colors"
               >
                 Achievements
-              </button>
+              </button> */}
               <button
                 onClick={() => scrollToSection("contact")}
                 className="text-gray-700 hover:text-[#E3AADD] px-3 py-2 text-sm font-medium transition-colors"
@@ -192,12 +192,12 @@ export default function Navbar() {
               >
                 About Us
               </button>
-              <button
+              {/* <button
                 onClick={() => scrollToSection("achievements")}
                 className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-[#E3AADD] hover:bg-[#FAE7FB] rounded-md"
               >
                 Achievements
-              </button>
+              </button> */}
               <button
                 onClick={() => scrollToSection("contact")}
                 className="block w-full text-left px-3 py-2 text-base font-medium text-gray-700 hover:text-[#E3AADD] hover:bg-[#FAE7FB] rounded-md"

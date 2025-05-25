@@ -1,14 +1,14 @@
-import Navbar from "@/components/navbar"
-import HeroSection from "@/components/hero-section"
-import ProjectScopeSection from "@/components/project-scope-section"
-import AppPreviewSection from "@/components/app-preview-section"
-import TechnologyStackSection from "@/components/technology-stack-section"
-import MilestonesSection from "@/components/milestones-section"
-import DownloadsSection from "@/components/downloads-section"
-import AboutUsSection from "@/components/about-us-section"
-import AchievementsSection from "@/components/achievements-section"
-import ContactUsSection from "@/components/contact-us-section"
-import FinalCtaSection from "@/components/final-cta-section"
+import Navbar from "@/components/navbar";
+import HeroSection from "@/components/hero-section";
+import ProjectScopeSection from "@/components/project-scope-section";
+import AppPreviewSection from "@/components/app-preview-section";
+import TechnologyStackSection from "@/components/technology-stack-section";
+import MilestonesSection from "@/components/milestones-section";
+import DownloadsSection from "@/components/downloads-section";
+import AboutUsSection from "@/components/about-us-section";
+import AchievementsSection from "@/components/achievements-section";
+import ContactUsSection from "@/components/contact-us-section";
+import FinalCtaSection from "@/components/final-cta-section";
 
 export default function Home() {
   return (
@@ -22,10 +22,10 @@ export default function Home() {
         <MilestonesSection />
         <DownloadsSection />
         <AboutUsSection />
-        <AchievementsSection />
+        {/* <AchievementsSection /> */}
         <ContactUsSection />
         <FinalCtaSection />
       </main>
     </div>
-  )
+  );
 }
