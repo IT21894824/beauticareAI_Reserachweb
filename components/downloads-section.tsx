@@ -54,7 +54,7 @@ export default function DownloadsSection() {
       icon: FileText,
       fileSize: "449 KB",
       format: "PPTX",
-      downloadUrl: "/downloads/research-paper.pdf",
+      downloadUrl: "/downloads/progress-presentation-2.pptx",
     },
   ];
 
