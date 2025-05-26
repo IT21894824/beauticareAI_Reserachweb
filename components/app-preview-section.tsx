@@ -61,6 +61,24 @@ export default function AppPreviewSection() {
       alt: "BeautiCare AI Full Look Preview",
     },
     {
+      title: "User Input",
+      description: "Select the gender & the occasion you're hopping in for",
+      image: "/c1.png",
+      alt: "User Input",
+    },
+    {
+      title: "Clothing Recommendation",
+      description: "AI-recommended dress combination",
+      image: "/c2.png",
+      alt: "Clothing Recommendation",
+    },
+    {
+      title: "Style References",
+      description: "View recommended dress combination in google images",
+      image: "/c3.png",
+      alt: "Google Image Recommendation",
+    },
+    {
       title: "Sign Up Screen",
       description:
         "Easy and clean account creation for a personalized experience",
